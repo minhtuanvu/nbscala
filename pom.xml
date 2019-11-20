@@ -3,21 +3,25 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.netbeans.modules</groupId>
+    <groupId>com.fluffy.luffs</groupId>
     <artifactId>nbscala</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>Scala Support for NetBeans</name>
-    <url>http://github.com/dcaoyuan/nbscala</url>
+    <url>http://github.com/cbm64chris/nbscala</url>
     <description>NetBeans Plugins for Scala</description>
-    <organization>
-        <name>NetBeans</name>
-        <url>http://netbeans.org</url>
-    </organization>
 
     <developers>
         <developer>
-            <id>dcaoyuan</id>
+            <id>cbm64chris</id>
+            <name>Chris Luff</name>
+            <email>chris1976[AT]me.com</email>
+            <timezone>+0</timezone>
+        </developer>
+    </developers>
+    
+    <contributors>
+        <contributor>
             <name>Caoyuan Deng</name>
             <email>dcaoyuan [at] gmail.com</email>
             <url>http://blogtrader.net</url>
@@ -25,34 +29,54 @@
             <roles>
                 <role>BDFL</role>
             </roles>
-        </developer>
-        <developer>
-            <id>svennb</id>
+        </contributor>
+        <contributor>
             <name>Sven Reimers</name>
             <email>sreimers [at] gmail.com</email>
             <url>http://nbguru.blogspot.com</url>
             <timezone>+2</timezone>
-        </developer>
-        <developer>
-            <id>og0815</id>
+        </contributor>
+        <contributor>
             <name>Oliver Guenther</name>
             <email>oliver.guenther [at] gg-net.de</email>
             <timezone>+2</timezone>
-        </developer>
-        <developer>
-            <id>cbm64chris</id>
-            <name>Chris Luff</name>
-            <email>chris1976 [at] me.com</email>
-            <timezone>+0</timezone>
-        </developer>
-    </developers>
+        </contributor>
+    </contributors>
+    
+    <scm>
+        <connection>scm:git:https://github.com/cbm64chris/${project.artifactId}.git</connection>
+        <developerConnection>scm:git:git@github.com/cbm64chris/${project.artifactId}.git</developerConnection>
+        <tag>HEAD</tag>
+        <url>https://github.com/cbm64chris/${project.artifactId}</url>
+    </scm>
+    
+    <issueManagement>
+        <system>git</system>
+        <url>https://github.com/cbm64chris/nbscala/issues</url>
+    </issueManagement>
+    
+    <ciManagement>
+        <system>travis</system>
+        <url>https://travis-ci.org/cbm64chris/${project.artifactId}/</url>
+    </ciManagement>
 
     <licenses>
         <license>
-            <name>CDDL-GPLV2</name>
-            <url>http://netbeans.org/cddl-gplv2.html</url>
+            <name>GNU GPLv3</name>
         </license>
     </licenses>
+
+    <distributionManagement>
+        <repository>
+            <id>sonatype-nexus-staging</id>
+            <name>Nexus Release Repository</name>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+        <snapshotRepository>
+            <id>sonatype-nexus-snapshots</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -60,11 +84,7 @@
         <brandingToken>nbscala</brandingToken>
         <deploy.version>snapshots</deploy.version>
 
-        <!-- Since this project has implementation dependencies on NetBeans no-friend modules,
-             we should build it using lower version NetBeans to get it to be able installed both
-             on lower and higher version, unless we use un-compatible features of higher version.
-        -->
-        <netbeans.version>9.0</netbeans.version>
+        <netbeans.version>RELEASE112</netbeans.version>
 
         <scala.version>2.11.3-nbscala</scala.version> <!-- use nbscala patched scala runtime @see libs.local-->
         <sbt.version>0.13.1</sbt.version>
@@ -89,29 +109,16 @@
         <scala.sbt.project.version>1.8.2.0</scala.sbt.project.version>
         <scala.stdplatform.version>1.8.2.0</scala.stdplatform.version>
         
-        <nb.installation>/Applications/NetBeans/NetBeans 9.0.app/Contents/Resources/NetBeans</nb.installation>
-        <nb.nbmdirectory>${basedir}/nbms</nb.nbmdirectory>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
 
     <repositories>
-        <repository>
-            <id>netbeans</id>
-            <name>NetBeans Platform Maven Repository</name>
-            <url>http://bits.netbeans.org/nexus/content/groups/netbeans</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-
         <repository>
             <id>repository.jboss.org-public</id>
             <name>JBoss.org Maven repository</name>
             <url>http://repository.jboss.org/nexus/content/groups/public</url>
         </repository>
-
         <repository>
             <id>Typesafe releases</id>
             <url>http://repo.typesafe.com/typesafe/ivy-releases</url>
@@ -120,7 +127,6 @@
             <id>Typesafe snapshots</id>
             <url>http://repo.typesafe.com/typesafe/ivy-snapshots</url>
         </repository>
-
     </repositories>
 
     <dependencies>
@@ -135,72 +141,55 @@
     <build>
         <pluginManagement>
             <plugins>
-                <!-- Plugins required for creating and packaging a NetBeans module -->
                 <plugin>
-                    <!-- https://github.com/mojohaus/nbm-maven-plugin -->
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>nbm-maven-plugin</artifactId>
-                    <version>4.1</version>
+                    <version>4.3</version>
                     <extensions>true</extensions>
                     <configuration>
                         <brandingToken>${brandingToken}</brandingToken>
                         <cluster>${brandingToken}</cluster>
-                        <forcedVersion>${netbeans.version}</forcedVersion>
-                        <!-- to have the goal 'nbm:run-ide' find the installation of the local netbeans -->
-                        <netbeansInstallation>${nb.installation}</netbeansInstallation>
-                        <additionalArguments>${nbm.run.arguments}</additionalArguments>
-                        <keystore>${nbm.sign.keystore}</keystore>
-                        <keystorealias>${nbm.sign.keystorealias}</keystorealias>
-                        <keystorepassword>${nbm.sign.keystorepassword}</keystorepassword>
+                        <licenseName>GNU GPLv3</licenseName>
+                        <licenseFile>${basedir}/LICENSE</licenseFile>
                     </configuration>
                 </plugin>
-
-                <plugin>
-                    <!-- https://github.com/mojohaus/nb-repository-plugin/ -->
-                    <!-- mvn nb-repository:populate -->
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>nb-repository-plugin</artifactId>
-                    <version>1.4-SNAPSHOT</version>
-                    <extensions>true</extensions>
-                    <configuration>
-                        <!-- to have the goal 'nb-repository:populate' find the installation and populating the local repository with them, set it on your maven settings.xml -->
-                        <netbeansInstallDirectory>${nb.installation}</netbeansInstallDirectory>
-                        <netbeansNbmDirectory>${nb.nbmdirectory}</netbeansNbmDirectory>
-                        <forcedVersion>${netbeans.version}</forcedVersion>
-                    </configuration>
-                </plugin>
-
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-jar-plugin</artifactId>
-                    <version>2.4</version>
+                    <version>3.2.0</version>
                     <configuration>
-                        <!-- to have the jar plugin pickup the nbm generated manifest -->
                         <useDefaultManifestFile>true</useDefaultManifestFile>
                     </configuration>
                 </plugin>
-                <!-- End of plugins for nbm -->
-
-                <!-- Java Compiler plugin -->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.0</version>
+                    <version>3.8.1</version>
                     <configuration>
-                        <!-- NetBeans 7.2+ requires JDK 7 -->
-                        <source>1.6</source>
-                        <target>1.6</target>
+                        <source>${maven.compiler.source}</source>
+                        <target>${maven.compiler.target}</target>
                     </configuration>
                 </plugin>
-
-                <!-- Adds artifacts to the local maven repository -->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-install-plugin</artifactId>
-                    <version>2.4</version>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>3.1.1</version>
+                    <configuration>
+                        <quiet>true</quiet>
+                        <doclint>all,-missing</doclint>
+                    </configuration>
                 </plugin>
-
-                <!-- Scala plugin for compiling and running Scala -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-gpg-plugin</artifactId>
+                    <version>1.6</version>
+                    <configuration>
+                        <gpgArguments>
+                            <arg>--pinentry-mode</arg>
+                            <arg>loopback</arg>
+                        </gpgArguments>
+                    </configuration>
+                </plugin>
                 <plugin>
                     <groupId>net.alchim31.maven</groupId>
                     <artifactId>scala-maven-plugin</artifactId>
@@ -222,7 +211,7 @@
                             <jvmArg>-Xbootclasspath/p:${settings.localRepository}/org/scala-lang/scala-reflect/${scala.version}/scala-reflect-${scala.version}.jar</jvmArg>
                             <jvmArg>-Xms64m</jvmArg>
                             <jvmArg>-Xmx512m</jvmArg>
-                            <jvmArg>-Xss64m</jvmArg> <!-- to avoid StackOverFlowError -->
+                            <jvmArg>-Xss64m</jvmArg>
                         </jvmArgs>
                         <args>
                             <arg>-target:jvm-1.6</arg>
@@ -230,11 +219,10 @@
                             <arg>-dependencyfile</arg>
                             <arg>${project.build.directory}/.scala_dependencies</arg>
                             <arg>-Xmax-classfile-name</arg>
-                            <arg>143</arg> <!-- to avoid 'error: File name too long' in Linux/ecryptfs -->
+                            <arg>143</arg>
                         </args>
                     </configuration>
                 </plugin>
-
                 <plugin>
                     <groupId>org.scalariform</groupId>
                     <artifactId>scalariform-maven-plugin</artifactId>
@@ -254,127 +242,85 @@
                         </execution>
                     </executions>
                 </plugin>
-
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-site-plugin</artifactId>
+                    <version>3.8.2</version>
+                    <dependencies>
+                        <dependency>
+                            <groupId>org.apache.maven.skins</groupId>
+                            <artifactId>maven-fluido-skin</artifactId>
+                            <version>1.8</version>
+                        </dependency>
+                    </dependencies>
+                </plugin>
             </plugins>
         </pluginManagement>
     </build>
 
     <profiles>
         <profile>
-            <!-- The following code includes tools.jar for JDKs on Windows, Linux and Solaris (it is already included in the runtime for Mac OS X and some free JDKs). -->
-            <!-- @see http://maven.apache.org/general.html#tools-jar-dependency -->
-            <id>dependency-of-default-tools-jar</id>
-            <activation>
-                <property>
-                    <name>java.vendor</name>
-                    <value>Sun Microsystems Inc.</value>
-                </property>
-            </activation>
-
-            <dependencies>
-                <dependency>
-                    <groupId>com.sun</groupId>
-                    <artifactId>tools</artifactId>
-                    <version>1.4.2</version>
-                    <scope>system</scope>
-                    <systemPath>${java.home}/../lib/tools.jar</systemPath>
-                </dependency>
-            </dependencies>
-        </profile>
-
-        <profile>
-            <!-- The following code includes tools.jar for JDKs on Windows, Linux and Solaris (it is already included in the runtime for Mac OS X and some free JDKs). -->
-            <!-- @see http://maven.apache.org/general.html#tools-jar-dependency -->
-            <id>dependency-of-default-tools-jar-openjdk</id>
-            <activation>
-                <property>
-                    <name>java.vendor</name>
-                    <value>Oracle Corporation</value>
-                </property>
-            </activation>
-
-            <dependencies>
-                <dependency>
-                    <groupId>com.sun</groupId>
-                    <artifactId>tools</artifactId>
-                    <version>1.4.2</version>
-                    <scope>system</scope>
-                    <systemPath>${java.home}/../lib/tools.jar</systemPath>
-                </dependency>
-            </dependencies>
-        </profile>
-
-        <profile>
-            <id>updatesite</id>
+            <id>sonatype-oss-release</id>
             <build>
                 <plugins>
                     <plugin>
-                        <groupId>org.codehaus.mojo</groupId>
-                        <artifactId>nbm-maven-plugin</artifactId>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                                <phase>verify</phase>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>attach-javadocs</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <version>3.2.0</version>
+                        <executions>
+                            <execution>
+                                <id>attach-sources</id>
+                                <goals>
+                                    <goal>jar-no-fork</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-site-plugin</artifactId>
                         <executions>
                             <execution>
                                 <id>site</id>
-                                <phase>package</phase>
                                 <goals>
-                                    <goal>autoupdate</goal>
+                                    <goal>site</goal>
                                 </goals>
+                                <phase>prepare-package</phase>
                             </execution>
                         </executions>
                     </plugin>
                 </plugins>
             </build>
         </profile>
-
-        <profile>
-            <id>sign-nbscala-nbms</id>
-            <!-- my keys/keystore was generated as (note: The keystore and key password needs to be the same):
-                 keytool -genkey -dname "CN=Caoyuan Deng, OU=nbscala, O=inloop.io, L=Richmond, S=BC, C=CA" -alias nbscala -validity 1800
-                 keytool -list -v
-
-                 To enable it, add all three keystore related parameters in ~/m2/settings.xml as:
-                 <profiles>
-                     <profile>
-                         <id>sign-nbscala-nbms</id>
-                         <activation>
-                             <activeByDefault>true</activeByDefault>
-                         </activation>
-                         <properties>
-                             <nbm.sign.keystore>${user.home}/.keystore</nbm.sign.keystore>
-                             <nbm.sign.keystorealias>nbscala</nbm.sign.keystorealias>
-                             <nbm.sign.keystorepassword>thepassword</nbm.sign.keystorepassword>
-                         </properties>
-                     </profile>
-                 </profiles>
-
-                 To pack a zip file for plugins.netbeans.org:
-                 mvn nbm:autoupdate
-                 cd target/netbeans_site
-                 zip nbscala-version.zip *.nbm
-            -->
-        </profile>
-
-        <profile>
-            <id>run-ide</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <properties>
-                <nbm.run.arguments></nbm.run.arguments>
-            </properties>
-        </profile>
-        <profile>
-            <id>debug-ide</id>
-            <properties>
-                <nbm.run.arguments>-J-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=8888</nbm.run.arguments>
-                <!--nbm.run.arguments>-J-Xrunjdwp:transport=dt_socket,server=y,suspend=n,address=8888</nbm.run.arguments-->
-            </properties>
-        </profile>
     </profiles>
 
     <dependencyManagement>
         <dependencies>
-
-            <!-- nbscala modules -->
             <dependency>
                 <groupId>${project.groupId}</groupId>
                 <artifactId>org-netbeans-libs-scala-compiler</artifactId>
@@ -574,10 +520,6 @@
                 <artifactId>org-netbeans-modules-web-browser-api</artifactId>
                 <version>${netbeans.version}</version>
             </dependency>
-
-
-
-            <!-- netbeans api -->
             <dependency>
                 <groupId>org.netbeans.api</groupId>
                 <artifactId>org-netbeans-libs-javacapi</artifactId>
@@ -932,16 +874,12 @@
                 <artifactId>org-netbeans-modules-editor-codetemplates</artifactId>
                 <version>${netbeans.version}</version>
             </dependency>
-
-
             <dependency>
                 <groupId>log4j</groupId>
                 <artifactId>log4j</artifactId>
                 <version>1.2.15</version>
                 <scope>provided</scope>
             </dependency>
-
-
         </dependencies>
     </dependencyManagement>
 
@@ -968,8 +906,8 @@
         <module>scala.refactoring</module>
         <module>scala.sbt</module>
         <module>scala.sbt.project</module>
-        <module>scala.stdplatform</module>
-        <module>scala.kit</module>
+        <!--        <module>scala.stdplatform</module>
+        <module>scala.kit</module>-->
     </modules>
 
 </project>
