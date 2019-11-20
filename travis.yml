@@ -1,3 +1,4 @@
+dist: disty
 language: java
 jdk:
   - oraclejdk8
