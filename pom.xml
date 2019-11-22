@@ -931,8 +931,8 @@
         <module>scala.refactoring</module>
         <module>scala.sbt</module>
         <module>scala.sbt.project</module>
-        <!--        <module>scala.stdplatform</module>
-        <module>scala.kit</module>-->
+        <module>scala.stdplatform</module>
+<!--        <module>scala.kit</module>-->
     </modules>
 
 </project>
