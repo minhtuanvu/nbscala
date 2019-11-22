@@ -113,22 +113,6 @@
         <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
 
-    <repositories>
-        <repository>
-            <id>repository.jboss.org-public</id>
-            <name>JBoss.org Maven repository</name>
-            <url>http://repository.jboss.org/nexus/content/groups/public</url>
-        </repository>
-        <repository>
-            <id>Typesafe releases</id>
-            <url>http://repo.typesafe.com/typesafe/ivy-releases</url>
-        </repository>
-        <repository>
-            <id>Typesafe snapshots</id>
-            <url>http://repo.typesafe.com/typesafe/ivy-snapshots</url>
-        </repository>
-    </repositories>
-
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
