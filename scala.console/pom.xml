@@ -107,6 +107,10 @@
             <groupId>org.netbeans.api</groupId>
             <artifactId>org-netbeans-api-java-classpath</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.netbeans.modules</groupId>
+            <artifactId>org-netbeans-libs-scala-compiler</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
@@ -124,14 +128,14 @@
                 <artifactId>scalariform-maven-plugin</artifactId>
             </plugin>
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
+                <groupId>org.apache.netbeans.utilities</groupId>
                 <artifactId>nbm-maven-plugin</artifactId>
                 <extensions>true</extensions>
                 <configuration>
-                    <author>Caoyuan Deng</author>
+                    <author>Chris Luff</author>
                     <codeNameBase>org.netbeans.modules.scala.console/1</codeNameBase>
-                    <licenseName>CDDL-GPLV2</licenseName>
-                    <licenseFile>license.txt</licenseFile>
+                    <licensename>GNU GPLv3</licensename>
+                    
                     <moduleDependencies>
                         <dependency>
                             <id>org.netbeans.api:org-netbeans-modules-extexecution-base</id>

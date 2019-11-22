@@ -42,14 +42,14 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
+                <groupId>org.apache.netbeans.utilities</groupId>
                 <artifactId>nbm-maven-plugin</artifactId>
                 <extensions>true</extensions>
                 <configuration>
-                    <author>Caoyuan Deng</author>
+                    <author>Chris Luff</author>
                     <codeNameBase>org.netbeans.libs.scala.compiler/1</codeNameBase>
-                    <licenseName>BSD-style License</licenseName>
-                    <licenseFile>license.txt</licenseFile>
+                    <licenseName>GNU GPLv3</licenseName>
+                    
                     <publicPackages>
                         <publicPackage>ch.epfl.lamp.compiler.msil</publicPackage>
                         <publicPackage>ch.epfl.lamp.compiler.msil.emit</publicPackage>

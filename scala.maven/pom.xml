@@ -109,14 +109,14 @@
                 <artifactId>maven-compiler-plugin</artifactId>
             </plugin>
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
+                <groupId>org.apache.netbeans.utilities</groupId>
                 <artifactId>nbm-maven-plugin</artifactId>
                 <extensions>true</extensions>
                 <configuration>
-                    <author>Caoyuan Deng</author>
+                    <author>Chris Luff</author>
                     <codeNameBase>org.netbeans.modules.scala.maven/1</codeNameBase>
-                    <licenseName>CDDL-GPLV2</licenseName>
-                    <licenseFile>license.txt</licenseFile>
+                    <licensename>GNU GPLv3</licensename>
+                    
                     <verifyRuntime>warn</verifyRuntime>
                 </configuration>
             </plugin>

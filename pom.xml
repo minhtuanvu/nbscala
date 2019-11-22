@@ -3,7 +3,7 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.fluffy.luffs</groupId>
+    <groupId>org.netbeans.modules</groupId>
     <artifactId>nbscala</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
@@ -142,7 +142,7 @@
         <pluginManagement>
             <plugins>
                 <plugin>
-                    <groupId>org.codehaus.mojo</groupId>
+                    <groupId>org.apache.netbeans.utilities</groupId>
                     <artifactId>nbm-maven-plugin</artifactId>
                     <version>4.3</version>
                     <extensions>true</extensions>
@@ -156,7 +156,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-jar-plugin</artifactId>
-                    <version>3.2.0</version>
+                    <version>2.6</version>
                     <configuration>
                         <useDefaultManifestFile>true</useDefaultManifestFile>
                     </configuration>
@@ -259,6 +259,23 @@
     </build>
 
     <profiles>
+        <profile>
+            <id>tools.jar</id>
+            <activation>
+                <file>
+                    <exists>${java.home}/../lib/tools.jar</exists>
+                </file>
+            </activation>
+            <dependencies>
+                <dependency>
+                    <groupId>com.sun</groupId>
+                    <artifactId>tools</artifactId>
+                    <version>1.4.2</version>
+                    <scope>system</scope>
+                    <systemPath>${java.home}/../lib/tools.jar</systemPath>
+                </dependency>
+            </dependencies>
+        </profile>
         <profile>
             <id>sonatype-oss-release</id>
             <build>
@@ -482,8 +499,15 @@
             </dependency>
             <dependency>
                 <groupId>org.netbeans.modules</groupId>
+                <artifactId>org-netbeans-modules-debugger-jpda</artifactId>
+                <version>${netbeans.version}</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.netbeans.modules</groupId>
                 <artifactId>org-netbeans-modules-debugger-jpda-ui</artifactId>
                 <version>${netbeans.version}</version>
+                <scope>provided</scope>
             </dependency>
             <dependency>
                 <groupId>org.netbeans.modules</groupId>
@@ -494,6 +518,7 @@
                 <groupId>org.netbeans.modules</groupId>
                 <artifactId>org-netbeans-modules-debugger-jpda-projects</artifactId>
                 <version>${netbeans.version}</version>
+                <scope>provided</scope>
             </dependency>
             <dependency>
                 <groupId>org.netbeans.modules</groupId>

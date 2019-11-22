@@ -132,7 +132,18 @@
             <groupId>org.netbeans.modules</groupId>
             <artifactId>org-netbeans-modules-scala-debugger-projects</artifactId>
         </dependency>
-
+        <dependency>
+            <groupId>org.netbeans.modules</groupId>
+            <artifactId>org-netbeans-modules-debugger-jpda</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.netbeans.modules</groupId>
+            <artifactId>org-netbeans-modules-debugger-jpda-projects</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.netbeans.modules</groupId>
+            <artifactId>org-netbeans-modules-debugger-jpda-ui</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
@@ -142,14 +153,14 @@
                 <artifactId>maven-compiler-plugin</artifactId>
             </plugin>
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
+                <groupId>org.apache.netbeans.utilities</groupId>
                 <artifactId>nbm-maven-plugin</artifactId>
                 <extensions>true</extensions>
                 <configuration>
-                    <author>Caoyuan Deng</author>
+                    <author>Chris Luff</author>
                     <codeNameBase>org.netbeans.modules.scala.debugger/1</codeNameBase>
-                    <licenseName>CDDL-GPLV2</licenseName>
-                    <licenseFile>license.txt</licenseFile>
+                    <licensename>GNU GPLv3</licensename>
+                    
                     <publicPackages>
                     </publicPackages>
                 </configuration>

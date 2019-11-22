@@ -197,6 +197,10 @@
             <artifactId>swing-layout</artifactId>
             <version>1.0.3</version>
         </dependency>
+        <dependency>
+            <groupId>org.netbeans.api</groupId>
+            <artifactId>org-netbeans-modules-project-libraries-ui</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
@@ -206,14 +210,14 @@
                 <artifactId>maven-compiler-plugin</artifactId>
             </plugin>
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
+                <groupId>org.apache.netbeans.utilities</groupId>
                 <artifactId>nbm-maven-plugin</artifactId>
                 <extensions>true</extensions>
                 <configuration>
-                    <author>Caoyuan Deng</author>
+                    <author>Chris Luff</author>
                     <codeNameBase>org.netbeans.modules.scala.project/1</codeNameBase>
-                    <licenseName>CDDL-GPLV2</licenseName>
-                    <licenseFile>license.txt</licenseFile>
+                    <licensename>GNU GPLv3</licensename>
+                    
                     <publicPackages>
                         <publicPackage>org.netbeans.modules.scala.project.api</publicPackage>
                         <publicPackage>org.netbeans.modules.scala.project.ui.customizer</publicPackage>

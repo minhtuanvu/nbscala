@@ -254,14 +254,14 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
+                <groupId>org.apache.netbeans.utilities</groupId>
                 <artifactId>nbm-maven-plugin</artifactId>
                 <extensions>true</extensions>
                 <configuration>
-                    <author>Caoyuan Deng</author>
+                    <author>Chris Luff</author>
                     <codeNameBase>org.netbeans.libs.sbt/1</codeNameBase>
-                    <licenseName>BSD-style License</licenseName>
-                    <licenseFile>license.txt</licenseFile>
+                    <licenseName>GNU GPLv3</licenseName>
+                    
                     <publicPackages>
                         <publicPackage>sbt</publicPackage>
                         <publicPackage>sbt.complete</publicPackage>

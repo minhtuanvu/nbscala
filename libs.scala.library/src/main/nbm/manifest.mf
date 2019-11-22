@@ -1,4 +1,5 @@
 Manifest-Version: 1.0
 OpenIDE-Module-Display-Category: Scala
+OpenIDE-Module: Scala
 AutoUpdate-Show-In-Client: true
 OpenIDE-Module-Localizing-Bundle: org/netbeans/libs/scala/library/resources/Bundle.properties

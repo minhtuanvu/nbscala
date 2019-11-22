@@ -32,14 +32,14 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
+                <groupId>org.apache.netbeans.utilities</groupId>
                 <artifactId>nbm-maven-plugin</artifactId>
                 <extensions>true</extensions>
                 <configuration>
-                    <author>Caoyuan Deng</author>
+                    <author>Chris Luff</author>
                     <codeNameBase>org.netbeans.libs.scala.library/1</codeNameBase>
-                    <licenseName>BSD-style License</licenseName>
-                    <licenseFile>license.txt</licenseFile>
+                    <licenseName>GNU GPLv3</licenseName>
+                    
                     <publicPackages>
                         <publicPackage>scala</publicPackage>
                         <publicPackage>scala.annotation</publicPackage>

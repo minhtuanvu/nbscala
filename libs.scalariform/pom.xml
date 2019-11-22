@@ -56,14 +56,14 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
+                <groupId>org.apache.netbeans.utilities</groupId>
                 <artifactId>nbm-maven-plugin</artifactId>
                 <extensions>true</extensions>
                 <configuration>
-                    <author>Caoyuan Deng</author>
+                    <author>Chris Luff</author>
                     <codeNameBase>org.netbeans.libs.scalariform/1</codeNameBase>
                     <licenseName>The MIT Licence</licenseName>
-                    <licenseFile>license.txt</licenseFile>
+                    
                     <publicPackages>
                         <publicPackage>scalariform.formatter</publicPackage>
                         <publicPackage>scalariform.formatter.preferences</publicPackage>
