@@ -5,11 +5,11 @@
     <parent>
         <groupId>org.netbeans.modules</groupId>
         <artifactId>nbscala</artifactId>
-        <version>1.0</version>
+        <version>1.1-SNAPSHOT</version>
     </parent>
 
     <artifactId>org-netbeans-modules-scala-stdplatform</artifactId>
-    <version>1.0</version>
+    <version>1.8.2.0</version>
     <name>org-netbeans-modules-scala-stdplatform</name>
     <packaging>nbm</packaging>
 

@@ -5,11 +5,11 @@
     <parent>
         <groupId>org.netbeans.modules</groupId>
         <artifactId>nbscala</artifactId>
-        <version>1.0</version>
+        <version>1.1-SNAPSHOT</version>
     </parent>
 
     <artifactId>org-netbeans-libs-scalariform</artifactId>
-    <version>1.0</version>
+    <version>0.1.5.2</version>
     <name>org-netbeans-libs-scalariform</name>
     <packaging>nbm</packaging>
 

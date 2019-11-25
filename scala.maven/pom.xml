@@ -4,12 +4,12 @@
     <parent>
         <artifactId>nbscala</artifactId>
         <groupId>org.netbeans.modules</groupId>
-        <version>1.0</version>
+        <version>1.1-SNAPSHOT</version>
     </parent>
 
     <artifactId>org-netbeans-modules-scala-maven</artifactId>
     <packaging>nbm</packaging>
-    <version>1.0</version>
+    <version>1.8.2.0</version>
 
     <name>org-netbeans-modules-scala-maven</name>
 
