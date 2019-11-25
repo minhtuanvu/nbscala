@@ -5,11 +5,11 @@
     <parent>
         <groupId>org.netbeans.modules</groupId>
         <artifactId>nbscala</artifactId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.0</version>
     </parent>
 
     <artifactId>org-netbeans-libs-sbt</artifactId>
-    <version>${libs.sbt.version}</version>
+    <version>1.0</version>
     <name>org-netbeans-libs-sbt</name>
     <packaging>nbm</packaging>
     
@@ -69,8 +69,7 @@
             <groupId>org.scala-sbt</groupId>
             <artifactId>compiler-interface-bin</artifactId>
             <version>${sbt.version}</version>
-        </dependency
-        <dependency>
+        </dependency <dependency>
             <groupId>org.scala-sbt</groupId>
             <artifactId>compiler-ivy-integration</artifactId>
             <version>${sbt.version}</version>
